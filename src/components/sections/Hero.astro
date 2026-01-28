@@ -1,0 +1,39 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  title = 'Pracownia Myśli',
+  subtitle = 'Gabinet psychoterapii. Pomagam odnaleźć drogę do wewnętrznej równowagi i lepszego zrozumienia siebie.',
+  ctaText = 'Umów wizytę',
+  ctaHref = '/kontakt',
+} = Astro.props;
+---
+
+<section class="relative bg-gradient-to-b from-steel-50 to-background py-20 md:py-28 lg:py-36">
+  <div class="container">
+    <div class="max-w-3xl mx-auto text-center space-y-8">
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-steel-800 leading-tight">
+        {title}
+      </h1>
+      <p class="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+        <a href={ctaHref} class="inline-flex items-center justify-center bg-[#F2055C] hover:bg-[#d9044f] text-white px-10 py-4 text-xl font-semibold shadow-md hover:shadow-lg transition-all rounded-md">
+          {ctaText}
+        </a>
+        <a href="/o-mnie" class="inline-flex items-center justify-center bg-steel-200 hover:bg-steel-300 text-steel-800 px-10 py-4 text-xl font-semibold shadow-md hover:shadow-lg transition-all rounded-md">
+          Poznaj mnie
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative element -->
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-steel-200 to-transparent"></div>
+</section>

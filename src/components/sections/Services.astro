@@ -1,0 +1,68 @@
+---
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
+const services = [
+  {
+    title: 'Psychoterapia indywidualna',
+    description: 'Indywidualne spotkania terapeutyczne dla dorosłych w bezpiecznej, wspierającej atmosferze.',
+    href: '/jak-pomagam',
+  },
+  {
+    title: 'Terapia DDA',
+    description: 'Specjalistyczna pomoc dla Dorosłych Dzieci Alkoholików w procesie zdrowienia i rozwoju.',
+    href: '/psychoterapia-dda',
+  },
+  {
+    title: 'Konsultacje online',
+    description: 'Sesje terapeutyczne przez internet dla osób, które preferują zdalną formę kontaktu.',
+    href: '/konsultacje-online',
+  },
+  {
+    title: 'Lęk i depresja',
+    description: 'Wsparcie w radzeniu sobie z zaburzeniami lękowymi, depresją i obniżonym nastrojem.',
+    href: '/jak-pomagam',
+  },
+  {
+    title: 'Kryzysy życiowe',
+    description: 'Pomoc w trudnych momentach życia - zmianach, stratach, decyzjach.',
+    href: '/jak-pomagam',
+  },
+  {
+    title: 'Rozwój osobisty',
+    description: 'Wsparcie w poznawaniu siebie, budowaniu samoświadomości i realizacji potencjału.',
+    href: '/oferta',
+  },
+];
+---
+
+<section class="py-16 md:py-20 lg:py-24 bg-background">
+  <div class="container">
+    <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-steel-800 mb-4">
+        Jak mogę Ci pomóc?
+      </h2>
+      <p class="text-muted-foreground text-lg">
+        Oferuję profesjonalne wsparcie psychologiczne dostosowane do Twoich indywidualnych potrzeb.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service) => (
+        <a href={service.href} class="group">
+          <Card className="h-full transition-all duration-200 hover:shadow-md hover:border-gray-400">
+            <CardHeader>
+              <CardTitle className="font-serif text-xl text-steel-800 group-hover:text-steel-950">
+                {service.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription className="text-base leading-relaxed">
+                {service.description}
+              </CardDescription>
+            </CardContent>
+          </Card>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

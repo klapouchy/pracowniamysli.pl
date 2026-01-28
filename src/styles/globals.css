@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 200 22% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 22% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 22% 20%;
+    --primary: 200 22% 46%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 201 19% 86%;
+    --secondary-foreground: 200 22% 20%;
+    --muted: 201 19% 86%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 338 96% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 201 19% 86%;
+    --input: 201 19% 86%;
+    --ring: 338 96% 48%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-serif;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-serif tracking-tight;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+}

@@ -1,0 +1,68 @@
+---
+import { Separator } from '@/components/ui/separator';
+
+const currentYear = new Date().getFullYear();
+
+const footerLinks = [
+  { href: '/o-mnie', label: 'O Mnie' },
+  { href: '/jak-pomagam', label: 'Jak Pomagam' },
+  { href: '/oferta', label: 'Dla Kogo?' },
+  { href: '/kontakt', label: 'Kontakt' },
+  { href: '/polityka-prywatnosci', label: 'Polityka Prywatności' },
+];
+---
+
+<footer class="bg-steel-50 border-t border-border">
+  <div class="container py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand -->
+      <div class="space-y-4">
+        <a href="/">
+          <img src="/images/logo.svg" alt="Pracownia Myśli" class="h-10 w-auto" />
+        </a>
+        <p class="text-sm text-muted-foreground leading-relaxed">
+          Gabinet psychoterapii. Profesjonalna pomoc psychologiczna i wsparcie w trudnych momentach życia.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="space-y-4">
+        <h3 class="font-medium text-foreground">Nawigacja</h3>
+        <nav class="flex flex-col space-y-2">
+          {footerLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-sm text-muted-foreground hover:text-accent transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-4">
+        <h3 class="font-medium text-foreground">Kontakt</h3>
+        <address class="not-italic text-sm text-muted-foreground space-y-2">
+          <p>
+            <a href="tel:+48123456789" class="hover:text-accent transition-colors">
+              +48 123 456 789
+            </a>
+          </p>
+          <p>
+            <a href="mailto:kontakt@pracowniamysli.pl" class="hover:text-accent transition-colors">
+              kontakt@pracowniamysli.pl
+            </a>
+          </p>
+          <p>Warszawa</p>
+        </address>
+      </div>
+    </div>
+
+    <Separator className="my-8" />
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+      <p>&copy; {currentYear} Pracownia Myśli. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { Content } = await page.render();
+---
+
+<PageLayout title={page.data.title} description={page.data.description}>
+  <header class="mb-8">
+    <h1 class="font-serif text-4xl md:text-5xl font-semibold text-steel-800 mb-4">
+      {page.data.title}
+    </h1>
+  </header>
+  <div class="prose prose-steel prose-lg max-w-none">
+    <Content />
+  </div>
+</PageLayout>
+
+<style is:global>
+  .prose {
+    --tw-prose-body: hsl(200 22% 25%);
+    --tw-prose-headings: hsl(200 22% 30%);
+    --tw-prose-links: hsl(338 96% 48%);
+    --tw-prose-bold: hsl(200 22% 20%);
+    --tw-prose-counters: hsl(0 0% 64%);
+    --tw-prose-bullets: hsl(0 0% 70%);
+    --tw-prose-hr: hsl(201 19% 86%);
+    --tw-prose-quotes: hsl(200 22% 35%);
+    --tw-prose-quote-borders: hsl(338 96% 48%);
+  }
+
+  .prose h1 {
+    display: none;
+  }
+
+  .prose h2 {
+    @apply font-serif text-2xl font-semibold mt-8 mb-4;
+  }
+
+  .prose h3 {
+    @apply font-serif text-xl font-semibold mt-6 mb-3;
+  }
+
+  .prose p {
+    @apply leading-relaxed mb-4;
+  }
+
+  .prose ul {
+    @apply my-4 space-y-2;
+  }
+
+  .prose li {
+    @apply leading-relaxed;
+  }
+
+  .prose a {
+    @apply underline underline-offset-4 hover:text-accent/80 transition-colors;
+  }
+
+  .prose strong {
+    @apply font-semibold;
+  }
+
+  .prose ol {
+    @apply my-4 space-y-2 list-decimal list-inside;
+  }
+</style>

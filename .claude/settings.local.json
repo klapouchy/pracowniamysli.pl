@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:pracowniamysli.com)",
+      "WebFetch(domain:www.pracowniamysli.pl)",
+      "WebFetch(domain:pracowniamysli.pl)",
+      "Bash(curl:*)",
+      "mcp__shadcn__get_project_registries",
+      "mcp__shadcn__search_items_in_registries",
+      "mcp__shadcn__get_item_examples_from_registries",
+      "mcp__shadcn__list_items_in_registries",
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(npx shadcn@latest add button card input textarea label separator sheet -y)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm run build:*)",
+      "Bash(for file in src/content/pages/*.md)",
+      "Bash(do sed -i '' '/^layout:/d' \"$file\")",
+      "Bash(done)",
+      "Bash(grep:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "shadcn"
+  ]
+}

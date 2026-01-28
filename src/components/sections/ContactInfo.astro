@@ -1,0 +1,99 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+
+interface Props {
+  showMap?: boolean;
+}
+
+const { showMap = true } = Astro.props;
+
+const contactDetails = [
+  {
+    label: 'Telefon',
+    value: '+48 123 456 789',
+    href: 'tel:+48123456789',
+  },
+  {
+    label: 'Email',
+    value: 'kontakt@pracowniamysli.pl',
+    href: 'mailto:kontakt@pracowniamysli.pl',
+  },
+  {
+    label: 'Adres',
+    value: 'ul. Przykładowa 10, 00-001 Warszawa',
+    href: null,
+  },
+];
+
+const workingHours = [
+  { day: 'Poniedziałek - Piątek', hours: '9:00 - 20:00' },
+  { day: 'Sobota', hours: '9:00 - 14:00' },
+  { day: 'Niedziela', hours: 'Zamknięte' },
+];
+---
+
+<section class="py-16 md:py-20 bg-steel-50">
+  <div class="container">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-steel-800 mb-4">
+        Kontakt
+      </h2>
+      <p class="text-muted-foreground text-lg">
+        Skontaktuj się ze mną, aby umówić wizytę lub zadać pytanie.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <!-- Contact Details Card -->
+      <Card>
+        <CardHeader>
+          <CardTitle className="font-serif text-xl text-steel-700">
+            Dane kontaktowe
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {contactDetails.map((detail) => (
+            <div class="space-y-1">
+              <p class="text-sm text-muted-foreground">{detail.label}</p>
+              {detail.href ? (
+                <a
+                  href={detail.href}
+                  class="text-foreground hover:text-accent transition-colors font-medium"
+                >
+                  {detail.value}
+                </a>
+              ) : (
+                <p class="text-foreground font-medium">{detail.value}</p>
+              )}
+            </div>
+          ))}
+
+          <Separator />
+
+          <div>
+            <h3 class="font-medium text-steel-700 mb-3">Godziny pracy</h3>
+            <ul class="space-y-2">
+              {workingHours.map((item) => (
+                <li class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">{item.day}</span>
+                  <span class="font-medium">{item.hours}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      {showMap && (
+        <Card className="overflow-hidden">
+          <div class="h-full min-h-[300px] bg-steel-100 flex items-center justify-center">
+            <p class="text-muted-foreground text-center px-8">
+              Mapa zostanie dodana po aktualizacji adresu.
+            </p>
+          </div>
+        </Card>
+      )}
+    </div>
+  </div>
+</section>
