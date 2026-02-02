@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Services from '@/components/sections/Services.astro';
+import ContactInfo from '@/components/sections/ContactInfo.astro';
+---
+
+<BaseLayout
+  title="Strona Główna"
+  description="Pracownia Myśli - gabinet psychoterapii w Warszawie. Profesjonalna pomoc psychologiczna, psychoterapia indywidualna, terapia DDA, konsultacje online."
+>
+  <Hero />
+  <Services />
+  <ContactInfo />
+</BaseLayout>
