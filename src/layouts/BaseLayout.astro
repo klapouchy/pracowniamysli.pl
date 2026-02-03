@@ -6,10 +6,121 @@ import Footer from '@/components/layout/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title, description = 'Pracownia Myśli - Gabinet psychoterapii. Profesjonalna pomoc psychologiczna i psychoterapia w Warszawie.' } = Astro.props;
+const {
+  title,
+  description = 'Pracownia Myśli - Gabinet psychoterapii. Profesjonalna pomoc psychologiczna i psychoterapia w Warszawie.',
+  ogImage = '/images/pracownia_mysli_oferta_o_mnie.jpg',
+  noindex = false
+} = Astro.props;
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
+const siteName = 'Pracownia Myśli';
+const fullTitle = `${title} | ${siteName}`;
+
+// JSON-LD Structured Data - LocalBusiness Schema
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://pracowniamysli.pl/#organization",
+  "name": "Pracownia Myśli - Gabinet Psychoterapii",
+  "alternateName": "Pracownia Myśli",
+  "description": "Gabinet psychoterapii prowadzony przez Martynę Borkowską-Pelc. Psychoterapia indywidualna, terapia par, konsultacje dla rodziców, psychoterapia DDA.",
+  "url": "https://pracowniamysli.pl",
+  "logo": "https://pracowniamysli.pl/images/logo.svg",
+  "image": "https://pracowniamysli.pl/images/pracownia_mysli_oferta_o_mnie.jpg",
+  "telephone": "+48123456789",
+  "email": "kontakt@pracowniamysli.pl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Przykładowa 10",
+    "addressLocality": "Warszawa",
+    "postalCode": "00-001",
+    "addressCountry": "PL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "52.2297",
+    "longitude": "21.0122"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "priceRange": "$$",
+  "currenciesAccepted": "PLN",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+  "areaServed": {
+    "@type": "City",
+    "name": "Warszawa"
+  },
+  "sameAs": [],
+  "founder": {
+    "@type": "Person",
+    "name": "Martyna Borkowska-Pelc",
+    "jobTitle": "Psychoterapeuta, Psycholog",
+    "description": "Dyplomowany psychoterapeuta, certyfikowany specjalista psychoterapii uzależnień"
+  }
+};
+
+// Professional Service Schema
+const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Pracownia Myśli - Gabinet Psychoterapii",
+  "serviceType": [
+    "Psychoterapia indywidualna",
+    "Psychoterapia par",
+    "Konsultacje psychologiczne dla rodziców",
+    "Psychoterapia DDA",
+    "Poradnictwo psychologiczne",
+    "Interwencja kryzysowa",
+    "Psychoterapia online"
+  ],
+  "provider": {
+    "@type": "Person",
+    "name": "Martyna Borkowska-Pelc"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceType": "Online i stacjonarnie"
+  }
+};
+
+// WebSite Schema for search box
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": siteName,
+  "url": "https://pracowniamysli.pl",
+  "inLanguage": "pl-PL",
+  "publisher": {
+    "@type": "Organization",
+    "name": siteName,
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pracowniamysli.pl/images/logo.svg"
+    }
+  }
+};
 ---
 
 <!doctype html>
@@ -17,25 +128,77 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Generator -->
     <meta name="generator" content={Astro.generator} />
 
-    <!-- SEO -->
-    <title>{title} | Pracownia Myśli</title>
+    <!-- Primary SEO Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
+    <meta name="author" content="Martyna Borkowska-Pelc" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
 
-    <!-- Open Graph -->
+    <!-- Keywords - relevant to psychotherapy services -->
+    <meta name="keywords" content="psychoterapia Warszawa, psychoterapeuta Warszawa, gabinet psychoterapii, terapia par, psychoterapia DDA, dorosłe dzieci alkoholików, konsultacje psychologiczne, pomoc psychologiczna, psycholog Warszawa, terapia online, Martyna Borkowska-Pelc, Pracownia Myśli" />
+
+    <!-- Geo Meta Tags -->
+    <meta name="geo.region" content="PL-MZ" />
+    <meta name="geo.placename" content="Warszawa" />
+    <meta name="geo.position" content="52.2297;21.0122" />
+    <meta name="ICBM" content="52.2297, 21.0122" />
+
+    <!-- Language and Locale -->
+    <meta name="language" content="Polish" />
+    <meta name="content-language" content="pl" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#627462" />
+    <meta name="msapplication-TileColor" content="#627462" />
+    <meta name="msapplication-navbutton-color" content="#627462" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#627462" />
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={`${title} | Pracownia Myśli`} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pracownia Myśli - Gabinet Psychoterapii" />
     <meta property="og:locale" content="pl_PL" />
+    <meta property="og:site_name" content={siteName} />
 
-    <!-- Fonts -->
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="Pracownia Myśli - Gabinet Psychoterapii" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(professionalServiceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
+
+    <!-- Fonts - with display swap for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   </head>
   <body class="min-h-screen flex flex-col antialiased">
     <Header />

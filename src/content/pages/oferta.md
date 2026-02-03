@@ -1,6 +1,8 @@
 ---
 title: "Dla Kogo Psychoterapia?"
+description: "Psychoterapia dla osób z lękiem, fobiami, depresją, problemami w związku, zaburzeniami odżywiania. Sprawdź czy psychoterapia może Ci pomóc."
 order: 3
+ogImage: "/images/pracownia_mysli_oferta_dla_kogo.jpg"
 ---
 
 ![Pracownia Myśli - Gabinet Psychoterapii - Martyna Borkowska](/images/pracownia_mysli_oferta_dla_kogo.jpg)

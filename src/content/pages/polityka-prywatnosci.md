@@ -2,6 +2,7 @@
 title: Polityka Prywatności
 description: Polityka prywatności i informacje o przetwarzaniu danych osobowych w Pracowni Myśli.
 order: 7
+noindex: true
 ---
 
 # Polityka Prywatności

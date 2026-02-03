@@ -1,6 +1,8 @@
 ---
 title: "Jak Pomagam"
+description: "Psychoterapia indywidualna, psychoterapia par, konsultacje dla rodziców, poradnictwo psychologiczne i interwencja kryzysowa."
 order: 2
+ogImage: "/images/pracownia_mysli_oferta_jak_pomagam.jpg"
 ---
 
 ![Pracownia Myśli Gabinet Psychoterapii - Martyna Borkowska](/images/pracownia_mysli_oferta_jak_pomagam.jpg)

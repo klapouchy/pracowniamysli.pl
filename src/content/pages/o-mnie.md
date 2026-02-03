@@ -1,6 +1,8 @@
 ---
 title: "O mnie"
+description: "Martyna Borkowska-Pelc - psycholog, dyplomowany psychoterapeuta, certyfikowany specjalista psychoterapii uzależnień w Warszawie."
 order: 1
+ogImage: "/images/pracownia_mysli_oferta_o_mnie.jpg"
 ---
 
 ![Pracownia Myśli Gabinet Psychoterapii - Martyna Borkowska](/images/pracownia_mysli_oferta_o_mnie.jpg)

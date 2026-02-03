@@ -1,6 +1,8 @@
 ---
 title: "Psychoterapia online"
+description: "Psychoterapia i konsultacje psychologiczne online przez Skype. Profesjonalna pomoc psychologiczna bez wychodzenia z domu."
 order: 5
+ogImage: "/images/pracownia_mysli_oferta_online.jpg"
 ---
 
 ![Pracownia Myśli - Gabinet Psychoterapii - Martyna Borkowska](/images/pracownia_mysli_oferta_online.jpg)

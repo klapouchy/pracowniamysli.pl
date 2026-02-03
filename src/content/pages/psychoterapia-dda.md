@@ -1,6 +1,8 @@
 ---
 title: "Psychoterapia DDA"
+description: "Specjalistyczna psychoterapia dla Dorosłych Dzieci Alkoholików (DDA). Pomoc w uwolnieniu się od śladów przeszłości."
 order: 4
+ogImage: "/images/pracownia_mysli_oferta_dda.jpg"
 ---
 
 ![Pracownia Myśli - Gabinet Psychoterapii - Martyna Borkowska](/images/pracownia_mysli_oferta_dda.jpg)

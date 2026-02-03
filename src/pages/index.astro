@@ -1,11 +1,60 @@
 ---
+const siteName = 'Pracownia Myśli';
+const title = 'Gabinet Psychoterapii - Wkrótce';
+const description = 'Pracownia Myśli - Gabinet psychoterapii Martyny Borkowskiej-Pelc. Psychoterapia indywidualna, terapia par, psychoterapia DDA w Warszawie.';
+const canonicalURL = 'https://pracowniamysli.pl';
+const ogImage = 'https://pracowniamysli.pl/images/pracownia_mysli_oferta_o_mnie.jpg';
+
+// JSON-LD for coming soon page
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": siteName,
+  "url": canonicalURL,
+  "description": description,
+  "inLanguage": "pl-PL"
+};
 ---
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pracownia Myśli - Wkrótce</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Primary SEO -->
+    <title>{title} | {siteName}</title>
+    <meta name="title" content={`${title} | ${siteName}`}>
+    <meta name="description" content={description}>
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Martyna Borkowska-Pelc">
+    <meta name="keywords" content="psychoterapia Warszawa, psychoterapeuta, gabinet psychoterapii, Pracownia Myśli, Martyna Borkowska-Pelc">
+    <link rel="canonical" href={canonicalURL}>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#627462">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content={canonicalURL}>
+    <meta property="og:title" content={`${title} | ${siteName}`}>
+    <meta property="og:description" content={description}>
+    <meta property="og:image" content={ogImage}>
+    <meta property="og:locale" content="pl_PL">
+    <meta property="og:site_name" content={siteName}>
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={`${title} | ${siteName}`}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={ogImage}>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
+
     <style>
         * {
             margin: 0;

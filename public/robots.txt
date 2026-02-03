@@ -1,0 +1,12 @@
+# Pracownia Myśli - Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pracowniamysli.pl/sitemap-index.xml
+
+# Disallow admin/private paths (none currently)
+# Disallow: /admin/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
